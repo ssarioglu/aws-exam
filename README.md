@@ -68,3 +68,29 @@ There are four types of EBS Volumes:
 * **Throughput HDD** Use case: data warehouse, log processing. Max IOPS 500.
 * **General Purpose SSD** Use case: OS boot volume, databases. Max IOPS 10,000
 * **Provisioned IOPS SSD** Use case: Applications which need very fast data access, large databases Max IOPS 20,000.
+---
+
+#### 2. AWS Databases
+
+**OLTP** – Online Transaction Processing (database types: AWS RDS, AWS Aurora)
+
+**OLAP** – Online Analytic Processing (AWS Redshift)
+
+**RPO (Recovery Point Objective)** – the acceptable data loss.
+
+**RTO (Recovery Time Objective)** – the time in future that your application can be live.
+
+* Manual DB Snapshots are not deleted automatically compared to Automated DB Snapshots!
+
+* To create a fault tolerant and high available database architecture, implement Multi-AZ.
+Use the DNS name in your application to connect to the database. If the database fails, AWS will update the records so it won’t impact your application.
+
+* Use Read Replicas in a heavy read traffic website.
+
+* Use AWS Redshift bulk import command, it is much more efficient than raw SQL Queries.
+
+* Amazon DynamoDB is the AWS Managed NoSQL database.
+
+* Increase the write efficiency of an Amazon DynamoDB by randomizing the primary key value.
+
+* AWS Aurora is the database engine developed by AWS which is faster and cheaper than AWS RDS.
