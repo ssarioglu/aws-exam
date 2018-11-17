@@ -154,3 +154,46 @@ There are three categories of Load Balancer:
 * **Sticky Sessions**: Ensures that the load balancer sends future user request to the EC2 instance that received the initial request.
 * **Auto Scaling Group:** Lets you increase or decrease the number of EC2 instances based upon CPU, RAM, Scheduled Scaling (usually used when you predict that there will be an increase in load in X time ex: Marketing Campaign)
 ---
+
+#### 5. Designing a secure VPN
+In this section, the exam will test your knowledge on the security aspect of an architecture. Building a secure architecture can be a challenging job of an architect. AWS has many services or features which can help you implement a secure architecture.
+
+**Key points to remember:**
+
+* VPC (Virtual Private Cloud) is a virtual network dedicated to a customer on AWS.
+* VPC cannot be associated with multiple regions.
+* VPC or Subnets IP address range cannot be altered once the VPC has been created.
+
+A newly VPC created has the following resources:
+* Subnets.
+* Route Tables.
+* Dynamic Host Configuration Protocol.
+* Security Groups.
+* Network Access Control
+* A subnet is segmentation of a VPC.
+
+* The smallest subnet can have 16 (/28 netmask) IP addresses and maximum 65,536 (/16 netmask).
+* 5 IP addresses of a subnet is being used by AWS, so if you create a subnet with 16 IP addresses will have only 11 IP address available to use (16-5 = 11)
+
+There are three types of a subnet:
+* **Public:** Has internet access and traffic is routed to the IGW (Internet Gateway)
+* **Private:** Is not routed to the IGW.
+* **VPN-only:** Traffic is directed to a VPG (Virtual Private Gateway).
+
+* A subnet can be associated with a single availability zone!.
+* For a  subnet to become public (have internet access), it would need to route its all non-local traffic to the IGW.
+* VPC Endpoints lets you create an end-to-end connection from your VPC with AWS services such as S3 via a private network without the need of an internet connection, NAT Gateway etc.
+* VPC peering connection, lets you connect instances from other VPC’s together.
+* Connections are initiated through a request/accept protocol.
+* It is a one to one relationship.
+* Cannot peer VPC from different regions.
+* Does not support transitive routing.
+
+There are two types of firewalls:
+* **Security Group.**
+* **Network Access Control Lists (ACLs)**
+
+* For instances in a private subnet that needs to access the internet, they would need to connect to a NAT instance or a NAT Gateway.
+* NAT Instances are managed by the customer.
+* NAT Gateway is managed by AWS and scales automatically.
+---
