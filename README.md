@@ -94,3 +94,31 @@ Use the DNS name in your application to connect to the database. If the database
 * Increase the write efficiency of an Amazon DynamoDB by randomizing the primary key value.
 
 * AWS Aurora is the database engine developed by AWS which is faster and cheaper than AWS RDS.
+---
+
+#### 3. AWS Storage, S3, Glacier
+This section focuses on various storage options, security of data storage and implement/deployment of storage options.
+
+**Key points:**
+
+* Block level (EBS) and file storage (EFS) are covered here
+* AWS S3 is an object storage, everything saved in S3 is stored as data objects.
+* Each object consists of a MetaData (created by Amazon) and Data (custom data).
+* An object size could be from 0 to 5 TB.
+* S3 Objects are replicated across multiple devices within a region!
+* S3 Objects are saved in a container called “Bucket“, consider Bucket as the root folder.
+* To prevent accidental object deletion, enable versioning and MFA.
+* S3 data can be replicated across other regions, this is usually done for compliance. Note: Only new objects will be replicated.
+* Bucket names are unique across all AWS Accounts!
+* Bucket name must be between 3 and 63 characters and can contain numbers, hyphens or periods.
+
+**Consistency Model of S3**
+
+* When you create a new object, you will receive the latest object. (Read After Write Consistency)PUTS to new object
+* When you PUT or DELETE a current object,  AWS provides Eventual consistency, it might take a while for the changes to be affected.
+
+**There are three S3 storage classes:**
+* **S3 Standard:** 99.99% availability, ideal for frequently accessed data.
+* **S3 Infrequent Access:** 99.9% availability, ideal for less frequently accessed data, cheaper than S3 Standard, minimum object size 128kb
+* **S3 RRS (Reduced Redundancy Storage):** 99.99% availability, cheapest. ideal for objects that data loss is not important.
+AWS Glacier is ideal for archiving data, data stored in Glacier is not immediately available. Retrieving data takes time.
