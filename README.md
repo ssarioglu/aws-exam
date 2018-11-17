@@ -122,3 +122,35 @@ This section focuses on various storage options, security of data storage and im
 * **S3 Infrequent Access:** 99.9% availability, ideal for less frequently accessed data, cheaper than S3 Standard, minimum object size 128kb
 * **S3 RRS (Reduced Redundancy Storage):** 99.99% availability, cheapest. ideal for objects that data loss is not important.
 AWS Glacier is ideal for archiving data, data stored in Glacier is not immediately available. Retrieving data takes time.
+---
+
+#### 4. Elastic Load Balancer
+Key points:
+
+There are two types of load balancer:
+
+* **Internet Facing:** has public IP
+* **Internal Load Balancer:** routes traffic within a VPC)
+
+There are three categories of Load Balancer:
+* **Application Load Balancer**
+  * Operates at Layer 7.
+  * Supports WebSockets and Secure WebSockets.
+  * Supports SNI.
+  * Supports IPv6.
+* **Network Load Balancer** ( The NLB is the recommended Load Balancer to be used at Layer 4)
+  * Operates at Layer 4.
+  * Preserves the source IP.
+  * Provides reduced latency compared to other Load Balancers.
+  * Handles millions of requests per seconds.
+  * Classic Load Balancer
+  * Operates at Layer 4.
+  * Features Cross Zone Load Balancing.
+
+* **Idle Connection Timeout:** Is the period of inactivity between the client and the EC2 instance in which the Load Balancer terminates the connection. By default, it is 60 seconds.
+* Enable Cross Zone Load Balancing, to distribute traffic evenly across the pool of registered AWS instances.
+* Connection Draining stops the load balancer sending traffic to faulty instances.
+* **Proxy Protocol:** To receive the clients IP and User Agent, it needs to be enabled. (only on Network Load Balancer and Classic Load Balancer)
+* **Sticky Sessions**: Ensures that the load balancer sends future user request to the EC2 instance that received the initial request.
+* **Auto Scaling Group:** Lets you increase or decrease the number of EC2 instances based upon CPU, RAM, Scheduled Scaling (usually used when you predict that there will be an increase in load in X time ex: Marketing Campaign)
+---
