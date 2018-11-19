@@ -197,3 +197,39 @@ There are two types of firewalls:
 * NAT Instances are managed by the customer.
 * NAT Gateway is managed by AWS and scales automatically.
 ---
+
+#### 6. Lambda
+You don’t need to manage the infrastructure for running Lambda functions. AWS handles the scaling, provisioning and the management of the servers. This does not mean AWS Lambda is like Beanstalk. 
+
+Beanstalk is a PaaS. With Beanstalk you could push framework codes such as WordPress, Laravel, Symfony etc. AWS handles the scaling, platform patching, and more operations.
+
+* AWS Lambda is not a replacement for Beanstalk
+
+* Functions can be monitored using Amazon CloudWatch or on the console.
+
+* You are charged per function call. Unlike EC2 which you get charged per hour usage, Lamba is per call.
+
+To increase the performance,  Lambda@Edge can be utilized which runs your code across AWS regions globally. This provides a faster response rate and reduced latency. If you receive a question, for example, a client is planning to utilize Lambda but has users from different regions of the world and how would you improve the performance. It is Lambda@Edge 🙂
+
+Functions can access a single VPC not multiple.
+
+The minimum memory is 128 MB and maximum 3008 MB. Functions will be terminated if it uses more than 3008 MB. (I don’t think the examiners will question your knowledge of memory size as it changes over the year)
+
+The maximum duration of a function is 300 seconds i.e 5 minutes.
+
+The functions can be written in:
+* Node.js
+* Python
+* Java
+* C#
+* Go
+
+Function access to other AWS resources can be granted by utilizing  IAM role. 
+
+You could develop an API using the API Gateway with Lambda Proxy Integration.
+
+If you are unsure when to use it, have a read on Contino top use cases.
+
+Are you planning to take the exam? Why not leave your questions in the comment section and we will get in touch with you.
+
+---
